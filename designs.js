@@ -8,7 +8,10 @@ function makeGrid() {
     const grid = document.getElementById('pixelCanvas');
     const height = document.getElementById('inputHeight').value;
     const width = document.getElementById('inputWeight').value;
-    // const fragment = document.createDocumentFragment();
+
+    //Delete the previous grid
+    emptyGrid(grid);
+
     //create rows
     for(let i = 0; i < height; i++){
         const row = document.createElement('tr'); //new element
@@ -20,6 +23,14 @@ function makeGrid() {
         }
     }
 }
+
+//Empty the grid of all child
+function emptyGrid(element){
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
+
 const submitButton = document.getElementById('gridSubmit');
 submitButton.addEventListener('click', function(evt){
     evt.preventDefault();
