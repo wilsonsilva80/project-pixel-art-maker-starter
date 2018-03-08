@@ -5,7 +5,7 @@
 
 function makeGrid() {
     //initializations
-    const grid = document.getElementById('pixelCanvas');
+    // const grid = document.getElementById('pixelCanvas');
     const height = document.getElementById('inputHeight').value;
     const width = document.getElementById('inputWeight').value;
 
@@ -31,8 +31,18 @@ function emptyGrid(element){
     }
 }
 
+//add event listener to the submit button
 const submitButton = document.getElementById('gridSubmit');
 submitButton.addEventListener('click', function(evt){
     evt.preventDefault();
     makeGrid();
+});
+
+//add event listener to the table and create a painting function
+const grid = document.getElementById('pixelCanvas');
+grid.addEventListener('click', function(evt){
+    evt.preventDefault();
+    const colorP = document.getElementById('colorPicker').value;
+    //prevent painting the whole row or table
+    if(evt.target.tagName.toLowerCase() == 'td') (evt.target).style.backgroundColor = colorP;
 });
